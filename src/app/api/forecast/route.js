@@ -19,7 +19,11 @@ export async function GET(request) {
     if (lat && lon) {
       params.lat = lat;
       params.lon = lon;
-    } else if (location) {
+    }  else if (location) {
+  // If it looks like a US zip code (5 digits), append ,US
+  const isZipCode = /^\d{5}$/.test(location.trim());
+  params.q = isZipCode ? `${location.trim()},US` : location;
+}else if (location) {
       params.q = location;
     } else {
       return Response.json({ error: 'Please provide a location.' }, { status: 400 });
