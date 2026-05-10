@@ -9,6 +9,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import YouTubeVideos from '@/components/YouTubeVideos';
+import GoogleMap from '@/components/GoogleMap';
 
 export default function Home() {
   const [weather, setWeather] = useState(null);
@@ -88,6 +89,7 @@ export default function Home() {
       <WeatherCard data={weather} />
       <ForecastCard data={forecast} />
       <YouTubeVideos videos={videos} location={cityName} /> {/*pass videos and city name */}
+      <GoogleMap lat={weather?.coord?.lat} lon={weather?.coord?.lon} locationName={cityName} />
       <Footer />
     </main>
   );
