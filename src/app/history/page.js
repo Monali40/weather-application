@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import WeatherQueryForm from '@/components/WeatherQueryForm';
 import QueryHistoryTable from '@/components/QueryHistoryTable';
 import EditQueryModal from '@/components/EditQueryModal';
+import ExportButtons from '@/components/ExportButtons';
 
 
 export default function HistoryPage() {
@@ -79,16 +80,17 @@ export default function HistoryPage() {
         )}
       </div>
 
+      <ExportButtons />
+
       {editingRecord && (
         <EditQueryModal
           record={editingRecord}
           onClose={() => setEditingRecord(null)}
           onUpdated={fetchRecords}
         />
+        //EDIT- UPDATE // --- Modal to edit a saved weather query (e.g. change notes, update location/dates)
       )}
 
     </main>
-
-
   );
 }

@@ -2,7 +2,7 @@ import { supabase } from '@/lib/supabase';
 import axios from 'axios';
 
 const API_KEY = process.env.OPENWEATHER_API_KEY;
-//INSERT// --- Route to handle saving weather queries to Supabase ---
+//INSERT- CREATE// --- Route to handle saving weather queries to Supabase ---
 export async function POST(request) {
   const body = await request.json();
   const { location, startDate, endDate, notes } = body;
@@ -78,7 +78,7 @@ export async function POST(request) {
   }
 }
 
-// --- Route to fetch saved weather queries from Supabase ---
+//GET- READ// --- Route to fetch saved weather queries from Supabase ---
 export async function GET() {
   const { data, error } = await supabase
     .from('weather_queries')
@@ -92,7 +92,7 @@ export async function GET() {
   return Response.json({ data });
 }
 
-//UPDATE // --- Route to update a saved weather query (e.g. change notes, update location/dates)
+//EDIT- UPDATE // --- Route to update a saved weather query (e.g. change notes, update location/dates)
 export async function PATCH(request) {
   const body = await request.json();
   const { id, startDate, endDate, notes, location } = body;
@@ -169,7 +169,7 @@ export async function PATCH(request) {
   return Response.json({ success: true, data: data[0] });
 }
 
-//DELETE // --- Route to delete a saved weather query
+//DELETE  // --- Route to delete a saved weather query
 export async function DELETE(request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
