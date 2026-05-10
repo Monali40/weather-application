@@ -7,6 +7,7 @@ import ForecastCard from '@/components/ForecastCard';
 import ErrorMessage from '@/components/ErrorMessage';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -57,6 +58,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <h1 className="text-3xl font-bold text-center mb-2">🌤️ Weather App</h1>
+      
+      <div className="text-center mb-4">
+    <Link href="/history" className="text-blue-500 underline text-sm hover:text-blue-700">
+      View Weather History & Saved Queries →
+    </Link>
+    </div>
+    
       <p className="text-center text-gray-500 text-sm mb-8">Search any city, zip code, or use your current location</p>
       
       <SearchBar
